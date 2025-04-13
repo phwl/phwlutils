@@ -14,12 +14,12 @@ function luksmount() {
 function luksumount() {
 	if [[ $# -ne 2 ]]
 	then
-		then echo "Usage: luksumount blkdev name"
+		echo "Usage: luksumount blkdev name"
 	else
 		echo "umounting $1 $2"
 		sudo umount /srv/$2
 		sudo cryptsetup luksClose /dev/mapper/$2
-	dfi
+	fi
 }
 
 function sambamount() {
