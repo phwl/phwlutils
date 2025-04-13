@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Sourcing .phwlfns_bash"
+
 # this associative array gives mappings between drive names and uuids 
 declare -A TDISKS=(
 	["wddisk"]="/dev/disk/by-uuid/5b5ac122-f46a-4307-8bfd-463bc9ca818a" 
