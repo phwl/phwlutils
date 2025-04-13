@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# this associative array gives mappings between drive names and uuids 
+declare -A TDISKS=(
+	["wddisk"]="/dev/disk/by-uuid/5b5ac122-f46a-4307-8bfd-463bc9ca818a" 
+	["troutdisk"]="/dev/disk/by-uuid/f3bacd55-843f-42c9-af34-b5cb43f73d00"
+)
+
 function luksmount() {
 	if [[ $# -ne 2 ]]
 	then
@@ -33,13 +39,16 @@ function sambamount() {
 }
 
 function mountall() {
-	luksmount "/dev/disk/by-uuid/5b5ac122-f46a-4307-8bfd-463bc9ca818a" "wddisk"
-	luksmount "/dev/disk/by-uuid/f3bacd55-843f-42c9-af34-b5cb43f73d00" "troutdisk"
+	for i in "${!TDISKS[@]}"; do
+		# echo "luksmount ${TDISKS[$i]} $i"
+		luksmount ${TDISKS[$i]} $i
+	done
 }
 
 function umountall() {
-	luksumount "/dev/disk/by-uuid/5b5ac122-f46a-4307-8bfd-463bc9ca818a" "wddisk"
-	luksumount "/dev/disk/by-uuid/f3bacd55-843f-42c9-af34-b5cb43f73d00" "troutdisk"
+	for i in "${!TDISKS[@]}"; do
+		luksumount ${TDISKS[$i]} $i
+	done
 }
 
 function mountcod() {
