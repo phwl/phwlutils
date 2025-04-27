@@ -57,3 +57,7 @@ function mountcod() {
 	# sudo mount.cifs  //cod.local/cod-share /srv/coddisk -o username=phwl
 	sambamount  "//cod.local/cod-share" "/srv/coddisk"
 }
+
+## ssh agent
+eval `ssh-agent -s`
+ssh-add
