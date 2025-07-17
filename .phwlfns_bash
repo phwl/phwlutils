@@ -59,7 +59,7 @@ function mountcod() {
 }
 
 function sgt() {
-	ssh -L localhost:8890:localhost:8890 gt.staff.sydney.edu.au
+	ssh -NL localhost:8890:localhost:8890 gt.staff.sydney.edu.au
 }
 
 function jup() {
