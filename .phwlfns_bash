@@ -59,11 +59,11 @@ function mountcod() {
 }
 
 function sgt() {
-	ssh -NL localhost:8890:localhost:8890 gt.staff.sydney.edu.au
+	ssh -NL localhost:${1:-8890}:localhost:${1:-8890} gt.staff.sydney.edu.au
 }
 
 function jup() {
-	jupyter notebook --no-browser --port 8890
+	jupyter notebook --no-browser --port ${1:-8890}
 }
 
 function sshagent() {
