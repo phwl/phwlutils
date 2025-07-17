@@ -70,7 +70,8 @@ function sshagent() {
 	eval `ssh-agent -s`
 	for i in ~/.ssh/*.pub
 	do
-		ssh-add `basename $i .pub`
+		echo "- " ssh-add ${i/.pub}
+		ssh-add ${i/.pub}
 	done
 }
 
