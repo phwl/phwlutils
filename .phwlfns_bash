@@ -58,6 +58,14 @@ function mountcod() {
 	sambamount  "//cod.local/cod-share" "/srv/coddisk"
 }
 
+function sgt() {
+	ssh -L localhost:8890:localhost:8890 gt.staff.sydney.edu.au
+}
+
+function jup() {
+	jupyter notebook --no-browser --port 8890
+}
+
 ## ssh agent
 eval `ssh-agent -s`
 ssh-add
