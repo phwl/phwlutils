@@ -64,7 +64,7 @@ macexclude() {
 }
 
 t7-fromtrout() {
-  macexclude -Phav --exclude SGEN/ /srv/troutdisk/data /srv/t7
+  macexclude -Phav --delete --exclude Sgen/ 192.168.1.109:/srv/troutdisk/data /srv/t7
 }
 
 
