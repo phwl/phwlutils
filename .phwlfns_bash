@@ -59,12 +59,14 @@ function mountcod() {
 }
 
 macexclude() {
-    EXCLUDE="--exclude .SD_store --exclude .Spotlight-V100 --exclude .fseventsd"
-    rsync $EXCLUDE $*
+    EX="--exclude .SD_store --exclude .Spotlight-V100 --exclude .fseventsd"
+    cmd="rsync $EX $*"
+    echo $cmd
+    eval "$cmd"
 }
 
 t7-fromtrout() {
-  macexclude -Phav --delete --exclude Sgen/ 192.168.1.109:/srv/troutdisk/data /srv/t7
+  macexclude -Phav --delete --exclude Sgen/ 192.168.1.109:/srv/troutdisk/data .
 }
 
 
