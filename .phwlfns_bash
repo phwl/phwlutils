@@ -58,6 +58,17 @@ function mountcod() {
 	sambamount  "//cod.local/cod-share" "/srv/coddisk"
 }
 
+macexclude() {
+    EXCLUDE="--exclude .SD_store --exclude .Spotlight-V100 --exclude .fseventsd"
+    rsync $EXCLUDE $*
+}
+
+t7-fromtrout() {
+  macexclude -Phav --exclude SGEN/ /srv/troutdisk/data /srv/t7
+}
+
+
+
 function sgt() {
 	ssh -NL localhost:${1:-8888}:localhost:${1:-8888} gt.staff.sydney.edu.au
 }
