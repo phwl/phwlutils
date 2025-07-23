@@ -70,6 +70,11 @@ t7-fromtrout() {
 }
 
 
+back2-fromtrout() {
+  macexclude -Phav --delete --exclude Sgen/ /srv/wddisk/image/2/data .
+}
+
+
 
 function sgt() {
 	ssh -NL localhost:${1:-8888}:localhost:${1:-8888} gt.staff.sydney.edu.au
