@@ -75,6 +75,20 @@ back2-fromtrout() {
 }
 
 
+teval() {
+	echo "-- $*"
+	eval "/usr/bin/time -v $*"
+}
+
+backup-troutdisk-to-wddisk() {
+  echo "** Running $0"
+  date
+  teval 'find /srv/wddisk -print > /srv/troutdisk/data/media/gen/WD.index'
+  teval 'rsync -avh --progress /srv/troutdisk/ /srv/wddisk/image/3'
+
+  date
+}
+
 
 function sgt() {
 	ssh -NL localhost:${1:-8888}:localhost:${1:-8888} gt.staff.sydney.edu.au
