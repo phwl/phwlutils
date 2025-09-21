@@ -66,12 +66,12 @@ macexclude() {
 }
 
 t7-fromtrout() {
-  macexclude -Phav --delete --exclude Sgen/ 192.168.1.109:/srv/wddisk/image/3 /Volumes/t7
+  macexclude -Phav --exclude Sgen/ 192.168.1.109:/srv/wddisk/image/3 /Volumes/t7
 }
 
 
 back2-fromtrout() {
-  macexclude -Phav --delete --exclude Sgen/ /srv/wddisk/image/2/data .
+  macexclude -Phav --exclude Sgen/ /srv/wddisk/image/2/data .
 }
 
 
