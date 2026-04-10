@@ -7,6 +7,7 @@ export PATH=$PATH:/opt/homebrew/bin
 declare -A TDISKS=(
 	["wddisk"]="/dev/disk/by-uuid/5b5ac122-f46a-4307-8bfd-463bc9ca818a" 
 	["troutdisk"]="/dev/disk/by-uuid/f3bacd55-843f-42c9-af34-b5cb43f73d00"
+  ["salmondisk"]="/dev/disk/by-uuid/9b6fc963-2769-4f4d-8311-026757a42c71"
 )
 
 function luksmount() {
@@ -43,7 +44,7 @@ function sambamount() {
 
 function mountall() {
 	for i in "${!TDISKS[@]}"; do
-		# echo "luksmount ${TDISKS[$i]} $i"
+		echo "luksmount ${TDISKS[$i]} $i"
 		luksmount ${TDISKS[$i]} $i
 	done
 }
