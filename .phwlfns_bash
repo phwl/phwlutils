@@ -15,9 +15,13 @@ function luksmount() {
 	then
 		echo "Usage: luksmount blkdev name"
 	else
-		echo "mounting $1 as $2"
-		sudo cryptsetup luksOpen $1 $2
-		sudo mount /dev/mapper/$2 /srv/$2
+		if [ -f "$1" ]; then
+			echo "mounting $1 as $2"
+			sudo cryptsetup luksOpen $1 $2
+			sudo mount /dev/mapper/$2 /srv/$2
+		else
+			echo "not mounting $1 (doesn't exist)"
+		fi
 	fi
 }
 
@@ -26,9 +30,13 @@ function luksumount() {
 	then
 		echo "Usage: luksumount blkdev name"
 	else
-		echo "umounting $1 $2"
-		sudo umount /srv/$2
-		sudo cryptsetup luksClose /dev/mapper/$2
+		if [ -f "$1" ]; then
+			echo "umounting $1 $2"
+			sudo umount /srv/$2
+			sudo cryptsetup luksClose /dev/mapper/$2
+		else
+			echo "not umounting $1 (doesn't exist)"
+		fi
 	fi
 }
 
